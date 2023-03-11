@@ -2,13 +2,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:worldnews_app/view/screens/reset_password_screen.dart';
-import 'package:worldnews_app/view/screens/signup_screen.dart';
-import '../../controller/cubit/login/login_cubit.dart';
-import '../../utils/constants.dart';
-import '../widgets/logo_widget.dart';
-import '../widgets/textfiled_widget.dart';
-import 'home_screen.dart';
+import 'package:worldnews_app/view/screens/authentication/reset_password_screen.dart';
+import 'package:worldnews_app/view/screens/authentication/signup_screen.dart';
+import '../../../controller/cubit/login/login_cubit.dart';
+import '../../../utils/constants.dart';
+import '../../widgets/logo_widget.dart';
+import '../../widgets/textfiled_widget.dart';
+import '../main_screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);

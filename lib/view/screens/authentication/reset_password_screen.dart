@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../controller/cubit/forgot_password/reset_password_cubit.dart';
-import '../../utils/constants.dart';
-import '../widgets/logo_widget.dart';
-import '../widgets/textfiled_widget.dart';
+import '../../../controller/cubit/forgot_password/reset_password_cubit.dart';
+import '../../../utils/constants.dart';
+import '../../widgets/logo_widget.dart';
+import '../../widgets/textfiled_widget.dart';
 import 'login_screen.dart';
 
 class ResetPasswordScreen extends StatelessWidget {

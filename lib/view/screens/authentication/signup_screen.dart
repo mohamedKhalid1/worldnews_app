@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:worldnews_app/view/widgets/logo_widget.dart';
 
-import '../../controller/cubit/signup/sign_up_cubit.dart';
-import '../../utils/constants.dart';
-import '../widgets/textfiled_widget.dart';
-import 'home_screen.dart';
+import '../../../controller/cubit/signup/sign_up_cubit.dart';
+import '../../../utils/constants.dart';
+import '../../widgets/textfiled_widget.dart';
+import '../main_screens/home_screen.dart';
 import 'login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {

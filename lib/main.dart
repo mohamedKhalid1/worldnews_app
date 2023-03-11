@@ -2,10 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:worldnews_app/utils/constants.dart';
-import 'package:worldnews_app/view/screens/home_screen.dart';
-import 'package:worldnews_app/view/screens/login_screen.dart';
-import 'package:worldnews_app/view/screens/reset_password_screen.dart';
-import 'package:worldnews_app/view/screens/signup_screen.dart';
+import 'package:worldnews_app/view/screens/main_screens/home_screen.dart';
+import 'package:worldnews_app/view/screens/authentication/login_screen.dart';
+import 'package:worldnews_app/view/screens/authentication/reset_password_screen.dart';
+import 'package:worldnews_app/view/screens/authentication/signup_screen.dart';
+import 'package:worldnews_app/view/screens/main_screens/news_screen.dart';
+import 'package:worldnews_app/view/screens/test.dart';
 
 import 'controller/cubit/forgot_password/reset_password_cubit.dart';
 import 'controller/cubit/login/login_cubit.dart';
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.route: (context) => const HomeScreen(),
           ResetPasswordScreen.route: (context) => ResetPasswordScreen(),
         },
-         home:const HomeScreen()
+         home:NewsScreen(),
          //SignUpScreen(),
         // StreamBuilder(
         //     stream: FirebaseAuth.instance.userChanges(),
