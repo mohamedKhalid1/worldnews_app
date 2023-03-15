@@ -22,8 +22,7 @@ class SignUpCubit extends Cubit<SignUpState> {
         emit(SignUpFailure("The password provided is too weak."));
       } else if (e.code == 'email-already-in-use') {
         emit(SignUpFailure('The account already exists for that email.'));
-      }
-      else{
+      } else {
         emit(SignUpFailure(e.message.toString()));
       }
     } catch (error) {

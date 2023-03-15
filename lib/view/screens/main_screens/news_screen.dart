@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:worldnews_app/controller/cubit/get_news/get_news_cubit.dart';
+import 'package:worldnews_app/view/screens/main_screens/search_screen.dart';
 import 'package:worldnews_app/view/widgets/logo_widget.dart';
 import 'package:worldnews_app/view/widgets/news_item.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+
+import '../../../utils/constants.dart';
 
 class NewsScreen extends StatelessWidget {
   const NewsScreen({Key? key}) : super(key: key);
@@ -14,6 +17,16 @@ class NewsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, SearchScreen.route);
+                },
+                icon: const Icon(
+                  Icons.youtube_searched_for,
+                  color: Constants.color1,
+                ))
+          ],
           title: const LogoWidget(),
           centerTitle: true,
           titleTextStyle: const TextStyle(color: Colors.black),

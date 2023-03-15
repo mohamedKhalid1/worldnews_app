@@ -46,7 +46,7 @@ class ResetPasswordScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 70,bottom: 100),
+                  padding: EdgeInsets.only(left: 70, bottom: 100),
                   child: LogoWidget(),
                 ),
                 const Text(
@@ -82,7 +82,10 @@ class ResetPasswordScreen extends StatelessWidget {
                             .resetPassword(email: emailController.text);
                       }
                     },
-                    child: const Text("Reset Password",style: TextStyle(fontSize: 18),),
+                    child: const Text(
+                      "Reset Password",
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
                 ),
               ],

@@ -24,3 +24,13 @@ class OpenBrowserFailure extends GetNewsState {
 
   OpenBrowserFailure({required this.error});
 }
+
+class SearchNewsLoading extends GetNewsState {}
+
+class SearchNewsSuccess extends GetNewsState {}
+
+class SearchNewsFailure extends GetNewsState {
+  final String error;
+
+  SearchNewsFailure({required this.error});
+}

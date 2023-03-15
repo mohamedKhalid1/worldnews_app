@@ -30,20 +30,23 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   flex: 9,
                   child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 5,
-                        mainAxisSpacing: 5,
-                        crossAxisCount: 2),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                            crossAxisCount: 2),
                     padding: const EdgeInsets.symmetric(horizontal: 5),
-                    
                     physics: const BouncingScrollPhysics(),
                     itemCount: Constants.categories.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        decoration:  BoxDecoration(
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: Colors.transparent,
-                          image: DecorationImage(image: AssetImage("assets/images/${Constants.categories[index]}.png"),fit: BoxFit.fill),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/${Constants.categories[index]}.png"),
+                              fit: BoxFit.fill),
                         ),
                         child: Card(
                           color: Colors.transparent,
@@ -59,7 +62,8 @@ class HomeScreen extends StatelessWidget {
                               getNews: () {
                                 GetNewsCubit.get(context)
                                     .getNews(Constants.categories[index]);
-                                Navigator.of(context).pushNamed(NewsScreen.route);
+                                Navigator.of(context)
+                                    .pushNamed(NewsScreen.route);
                               },
                               title: Constants.categories[index].toUpperCase(),
                               subTitle:

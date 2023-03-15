@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../utils/constants.dart';
 
 class LogoWidget extends StatelessWidget {
@@ -20,7 +19,9 @@ class LogoWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50),
               ),
             ),
-            const SizedBox(width: 46,),
+            const SizedBox(
+              width: 46,
+            ),
             Container(
               width: 40,
               height: 50,
@@ -33,18 +34,36 @@ class LogoWidget extends StatelessWidget {
         ),
         Row(
           children: const [
-            SizedBox(width: 12,),
-
-            Text("W ",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white),),
-            Text("orld",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-
-            SizedBox(width: 20,),
-            Text("N ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.white),),
-            Text("ews",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-
+            SizedBox(
+              width: 12,
+            ),
+            Text(
+              "W ",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            Text(
+              "orld",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Text(
+              "N ",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.white),
+            ),
+            Text(
+              "ews",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
           ],
         ),
-
       ],
     );
   }

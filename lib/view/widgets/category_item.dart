@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:worldnews_app/utils/constants.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem(

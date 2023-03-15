@@ -11,6 +11,7 @@ class GetNewsCubit extends Cubit<GetNewsState> {
 
   static GetNewsCubit get(context) => BlocProvider.of(context);
   List news = [];
+  List searchNews = [];
 
   Future<void> getNews(String category) async {
     emit(GetNewsLoading());
@@ -26,12 +27,21 @@ class GetNewsCubit extends Cubit<GetNewsState> {
   Future openBrowser(String browserUrl) async {
     emit(OpenBrowserLoading());
     try {
-      // await canLaunchUrl(browserUrl as Uri);
-      await launchUrl(browserUrl as Uri);
+      await launchUrl(Uri.parse(browserUrl));
       OpenBrowserSuccess();
-    }
-    catch (error) {
+    } catch (error) {
       OpenBrowserFailure(error: error.toString());
+    }
+  }
+
+  Future<void> getSearch(String searchWord) async {
+    emit(SearchNewsLoading());
+    try {
+      List newsAsJson = await ApiManager.getSearch(searchWord);
+      searchNews = newsAsJson.map((e) => NewsModel.fromJson(e)).toList();
+      emit(SearchNewsSuccess());
+    } catch (error) {
+      emit(SearchNewsFailure(error: error.toString()));
     }
   }
 }

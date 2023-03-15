@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static const color1 = Colors.blue;
-  static const color2 = Colors.green;
+  static const color2 = Colors.blueGrey;
   static const styleTitle =
       TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
   static const styleSubTitle = TextStyle(fontSize: 18);

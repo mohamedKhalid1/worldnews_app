@@ -10,7 +10,6 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of(context);
 
   login({required String emailAddress, required String password}) async {
-
     try {
       emit(LoginLoading());
 
@@ -22,8 +21,7 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginFailure('No user found for that email.'));
       } else if (e.code == 'wrong-password') {
         emit(LoginFailure('Wrong password provided for that user.'));
-      }
-      else{
+      } else {
         emit(LoginFailure(e.message.toString()));
       }
     } catch (error) {

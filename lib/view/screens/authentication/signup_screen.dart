@@ -63,7 +63,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
-
                   child: Form(
                     key: formKey,
                     child: Column(
@@ -122,7 +121,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: 50,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Constants.color1, // Background color
+                                backgroundColor:
+                                    Constants.color1, // Background color
                               ),
                               onPressed: () async {
                                 if (formKey.currentState!.validate()) {
@@ -131,7 +131,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       password: passwordController.text);
                                 }
                               },
-                              child: const Text("Sign up",style: TextStyle(fontSize: 18),),
+                              child: const Text(
+                                "Sign up",
+                                style: TextStyle(fontSize: 18),
+                              ),
                             )),
                         Text.rich(
                           TextSpan(text: "Already have an account ", children: [

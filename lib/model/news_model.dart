@@ -26,15 +26,4 @@ class NewsModel {
     content = json['content'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['author'] = author;
-    data['title'] = title;
-    data['description'] = description;
-    data['url'] = url;
-    data['urlToImage'] = urlToImage;
-    data['publishedAt'] = publishedAt;
-    data['content'] = content;
-    return data;
-  }
 }

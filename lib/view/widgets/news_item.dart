@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:worldnews_app/model/news_model.dart';
 import 'package:worldnews_app/utils/constants.dart';
-import 'package:worldnews_app/view/screens/main_screens/news_screen.dart';
 import 'package:worldnews_app/view/screens/main_screens/see_more_screen.dart';
 
 class NewsItem extends StatelessWidget {
