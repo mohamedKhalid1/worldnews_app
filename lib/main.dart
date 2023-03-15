@@ -1,19 +1,22 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:worldnews_app/controller/cubit/get_news/get_news_cubit.dart';
 import 'package:worldnews_app/utils/constants.dart';
 import 'package:worldnews_app/view/screens/main_screens/home_screen.dart';
 import 'package:worldnews_app/view/screens/authentication/login_screen.dart';
 import 'package:worldnews_app/view/screens/authentication/reset_password_screen.dart';
 import 'package:worldnews_app/view/screens/authentication/signup_screen.dart';
 import 'package:worldnews_app/view/screens/main_screens/news_screen.dart';
+import 'package:worldnews_app/view/screens/main_screens/see_more_screen.dart';
 import 'package:worldnews_app/view/screens/test.dart';
+import 'package:worldnews_app/view/widgets/news_item.dart';
 
 import 'controller/cubit/forgot_password/reset_password_cubit.dart';
 import 'controller/cubit/login/login_cubit.dart';
 import 'controller/cubit/signup/sign_up_cubit.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -36,21 +39,23 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ResetPasswordCubit(),
         ),
+        BlocProvider(create: (context) => GetNewsCubit()),
       ],
       child: MaterialApp(
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
         title: 'worldnews',
         routes: {
           LoginScreen.route: (context) => LoginScreen(),
           SignUpScreen.route: (context) => const SignUpScreen(),
-          HomeScreen.route: (context) => const HomeScreen(),
+          HomeScreen.route: (context) => HomeScreen(),
           ResetPasswordScreen.route: (context) => ResetPasswordScreen(),
+          NewsScreen.route: (context) => const NewsScreen(),
+          SeeMoreScreen.route: (context) =>  SeeMoreScreen(),
         },
-         home:NewsScreen(),
-         //SignUpScreen(),
+        home: HomeScreen(),
+        //SignUpScreen(),
         // StreamBuilder(
         //     stream: FirebaseAuth.instance.userChanges(),
         //     builder: (context, snapshot) {

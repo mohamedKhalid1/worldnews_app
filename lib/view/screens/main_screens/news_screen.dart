@@ -1,60 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:tab_container/tab_container.dart';
-
-import '../../widgets/tab_container_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:worldnews_app/controller/cubit/get_news/get_news_cubit.dart';
+import 'package:worldnews_app/view/widgets/logo_widget.dart';
+import 'package:worldnews_app/view/widgets/news_item.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 
 class NewsScreen extends StatelessWidget {
   const NewsScreen({Key? key}) : super(key: key);
+  static const String route = "NewsScreen";
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: const LogoWidget(),
+          centerTitle: true,
+          titleTextStyle: const TextStyle(color: Colors.black),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+          ),
+        ),
         body: SingleChildScrollView(
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
-            child: TabContainer(
-              childPadding: const EdgeInsets.all(20),
-              radius: 0,
-              colors: [
-                Color(0xff000338),
-                Color(0xff021054),
-                Color(0xff08306c),
-                Color(0xff0d57a1),
-                Color(0xff0d57a1),
-                Color(0xff0d57a1),
-              ],
-              tabEdge: TabEdge.top,
-              tabs: [
-                // Icon(Icons.headphones),
-                // Icon(
-                //   Icons.headphones_battery,
-                // ),
-                // Icon(Icons.headphones_battery_sharp),
-                // Icon(Icons.headphones_outlined)
-                "health",
-                "health",
-                "health",
-                "health",
-                "health",
-                "health",
-              ],
-              selectedTextStyle: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold),
-              unselectedTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 13.0,
-                  fontWeight: FontWeight.bold),
-              children: const [
-                TabContainerItem(),
-                TabContainerItem(),
-                TabContainerItem(),
-                TabContainerItem(),
-                TabContainerItem(),
-                TabContainerItem()
-              ],
+            child: BlocConsumer<GetNewsCubit, GetNewsState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return ConditionalBuilder(
+                  condition: state is! GetNewsLoading,
+                  builder: (BuildContext context) {
+                    return Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: GetNewsCubit.get(context).news.length,
+                            itemBuilder: (context, index) {
+                              return NewsItem(
+                                news: GetNewsCubit.get(context).news[index],
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                  fallback: (BuildContext context) {
+                    return const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    );
+                  },
+                );
+              },
             ),
           ),
         ),
