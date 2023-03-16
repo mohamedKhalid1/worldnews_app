@@ -22,13 +22,15 @@ class CategoryItem extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 5),
         child: Text(
           title,
-          style: const TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
       subtitle: Text(
         subTitle,
-        style: const TextStyle(color: Colors.white, fontSize: 14),
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white),
       ),
       trailing:
           const Icon(Icons.arrow_forward_ios_outlined, color: Colors.white),

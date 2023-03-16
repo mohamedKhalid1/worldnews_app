@@ -53,11 +53,11 @@ class NewsItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Constants.color2,
                       borderRadius: BorderRadius.circular(20),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Colors.white,
+                          color: Theme.of(context).secondaryHeaderColor,
                           spreadRadius: 7.0,
-                          offset: Offset(
+                          offset: const Offset(
                             2.0,
                             2.0,
                           ), // shadow direction: bottom right
@@ -73,10 +73,7 @@ class NewsItem extends StatelessWidget {
                               news.description ?? "No Description",
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ],
@@ -97,12 +94,12 @@ class NewsItem extends StatelessWidget {
                 child: Text(
                   news.author ?? "No Author",
                   maxLines: 1,
-                  style: const TextStyle(fontSize: 14),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               Text(
                 DateFormat.yMMMd().format(DateTime.parse(news.publishedAt!)),
-                style: const TextStyle(fontSize: 14),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
           )

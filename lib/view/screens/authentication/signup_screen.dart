@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:worldnews_app/view/widgets/logo_widget.dart';
 
+import '../../../controller/cubit/get_news/get_news_cubit.dart';
 import '../../../controller/cubit/signup/sign_up_cubit.dart';
 import '../../../utils/constants.dart';
 import '../../widgets/textfiled_widget.dart';
@@ -54,6 +55,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       builder: (context, state) {
         return Scaffold(
+          appBar: AppBar(
+            actions: [
+              IconButton(
+                onPressed: () {
+                  GetNewsCubit.get(context).changeThemMode();
+                },
+                icon: GetNewsCubit.get(context).isDark
+                    ? const Icon(Icons.brightness_4)
+                    : const Icon(Icons.brightness_4_outlined),
+              ),
+            ],
+          ),
           body: ModalProgressHUD(
             inAsyncCall: loading,
             child: Padding(
@@ -66,15 +79,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Form(
                     key: formKey,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          height: 50,
-                        ),
                         const Padding(
                           padding: EdgeInsets.only(left: 70),
                           child: LogoWidget(),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.1,
                         ),
                         TextFieldInput(
                           textEditingController: usernameController,
@@ -86,6 +97,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             }
                           },
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         TextFieldInput(
                           textEditingController: emailController,
                           hintText: "Enter your email",
@@ -95,6 +109,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               return "email must not be empty";
                             }
                           },
+                        ),
+                        const SizedBox(
+                          height: 20,
                         ),
                         TextFieldInput(
                           textEditingController: passwordController,
@@ -106,6 +123,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             }
                           },
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         TextFieldInput(
                           textEditingController: bioController,
                           hintText: "Enter your bio",
@@ -115,6 +135,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               return "bio must not be empty";
                             }
                           },
+                        ),
+                        const SizedBox(
+                          height: 20,
                         ),
                         SizedBox(
                             width: double.infinity,
@@ -136,19 +159,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 style: TextStyle(fontSize: 18),
                               ),
                             )),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.17,
+                        ),
                         Text.rich(
-                          TextSpan(text: "Already have an account ", children: [
-                            TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.pushReplacementNamed(
-                                        context, LoginScreen.route);
-                                  },
-                                text: "Login",
-                                style: const TextStyle(
-                                    color: Constants.color2,
-                                    decoration: TextDecoration.underline)),
-                          ]),
+                          TextSpan(
+                              text: "Already have an account ",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 18),
+                              children: [
+                                TextSpan(
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.pushReplacementNamed(
+                                            context, LoginScreen.route);
+                                      },
+                                    text: "Login",
+                                    style: const TextStyle(
+                                        color: Constants.color1,
+                                        decoration: TextDecoration.underline)),
+                              ]),
                         ),
                       ],
                     ),

@@ -19,19 +19,24 @@ class SearchScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
+            actions: [
+              IconButton(
+                onPressed: () {
+                  GetNewsCubit.get(context).changeThemMode();
+                },
+                icon: GetNewsCubit.get(context).isDark
+                    ? const Icon(Icons.brightness_4)
+                    : const Icon(Icons.brightness_4_outlined),
+              ),
+            ],
             title: const LogoWidget(),
             centerTitle: true,
-            titleTextStyle: const TextStyle(color: Colors.black),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            automaticallyImplyLeading: false,
             leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.black,
               ),
             ),
           ),

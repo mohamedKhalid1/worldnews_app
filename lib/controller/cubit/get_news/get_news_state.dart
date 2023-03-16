@@ -34,3 +34,5 @@ class SearchNewsFailure extends GetNewsState {
 
   SearchNewsFailure({required this.error});
 }
+
+class ChangeThemeMode extends GetNewsState {}

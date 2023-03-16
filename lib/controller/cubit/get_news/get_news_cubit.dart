@@ -12,6 +12,7 @@ class GetNewsCubit extends Cubit<GetNewsState> {
   static GetNewsCubit get(context) => BlocProvider.of(context);
   List news = [];
   List searchNews = [];
+  bool isDark=false;
 
   Future<void> getNews(String category) async {
     emit(GetNewsLoading());
@@ -44,4 +45,10 @@ class GetNewsCubit extends Cubit<GetNewsState> {
       emit(SearchNewsFailure(error: error.toString()));
     }
   }
+
+  changeThemMode(){
+    isDark=!isDark;
+    emit(ChangeThemeMode());
+  }
+
 }

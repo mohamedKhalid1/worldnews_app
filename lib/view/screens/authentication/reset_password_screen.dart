@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../controller/cubit/forgot_password/reset_password_cubit.dart';
+import '../../../controller/cubit/get_news/get_news_cubit.dart';
 import '../../../utils/constants.dart';
 import '../../widgets/logo_widget.dart';
 import '../../widgets/textfiled_widget.dart';
@@ -17,6 +18,16 @@ class ResetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              GetNewsCubit.get(context).changeThemMode();
+            },
+            icon: GetNewsCubit.get(context).isDark
+                ? const Icon(Icons.brightness_4)
+                : const Icon(Icons.brightness_4_outlined),
+          ),
+        ],
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: TextButton(
@@ -49,9 +60,9 @@ class ResetPasswordScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 70, bottom: 100),
                   child: LogoWidget(),
                 ),
-                const Text(
+                 Text(
                   "Please enter your email for reset password !!",
-                  style: TextStyle(fontSize: 18),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 18),
                 ),
                 const SizedBox(
                   height: 20,
@@ -82,12 +93,14 @@ class ResetPasswordScreen extends StatelessWidget {
                             .resetPassword(email: emailController.text);
                       }
                     },
-                    child: const Text(
+                    child:  Text(
                       "Reset Password",
-                      style: TextStyle(fontSize: 18),
+                      style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium,
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

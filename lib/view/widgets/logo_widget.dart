@@ -33,34 +33,28 @@ class LogoWidget extends StatelessWidget {
           ],
         ),
         Row(
-          children: const [
-            SizedBox(
+          children: [
+            const SizedBox(
               width: 12,
             ),
             Text(
               "W ",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             Text(
               "orld",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Text(
               "N ",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Colors.white),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             Text(
               "ews",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ],
         ),

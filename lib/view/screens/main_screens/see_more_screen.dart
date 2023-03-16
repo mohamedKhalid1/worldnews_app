@@ -23,29 +23,28 @@ class SeeMoreScreen extends StatelessWidget {
           appBar: AppBar(
             actions: [
               TextButton(
-                  onPressed: () {
-                    GetNewsCubit.get(context).openBrowser(news.url!);
-                  },
-                  child: Row(
-                    children: const [
-                      Text("See in browser"),
-                      Icon(Icons.arrow_forward_ios_outlined),
-                    ],
-                  ))
+                onPressed: () {
+                  GetNewsCubit.get(context).openBrowser(news.url!);
+                },
+                child: const Text("browser >"),
+              ),
+              IconButton(
+                onPressed: () {
+                  GetNewsCubit.get(context).changeThemMode();
+                },
+                icon: GetNewsCubit.get(context).isDark
+                    ? const Icon(Icons.brightness_4)
+                    : const Icon(Icons.brightness_4_outlined),
+              ),
             ],
             title: const LogoWidget(),
             centerTitle: true,
-            titleTextStyle: const TextStyle(color: Colors.black),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            automaticallyImplyLeading: false,
             leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.black,
               ),
             ),
           ),
@@ -59,8 +58,10 @@ class SeeMoreScreen extends StatelessWidget {
                     child: Text(
                       news.title ?? "No Title",
                       maxLines: 2,
-                      style: const TextStyle(
-                          fontSize: 16),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(fontSize: 18),
                     ),
                   ),
                   Container(
@@ -88,11 +89,11 @@ class SeeMoreScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Constants.color2,
                       borderRadius: BorderRadius.circular(20),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Colors.white,
+                          color: Theme.of(context).secondaryHeaderColor,
                           spreadRadius: 7.0,
-                          offset: Offset(
+                          offset: const Offset(
                             2.0,
                             2.0,
                           ), // shadow direction: bottom right
@@ -110,8 +111,10 @@ class SeeMoreScreen extends StatelessWidget {
                               text: [
                                 news.content ?? "No Content",
                               ],
-                              textStyle: const TextStyle(
-                                  fontSize: 20, color: Colors.white),
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .displayMedium!
+                                  .copyWith(color: Colors.white),
                               textAlign: TextAlign.start,
                             ),
                           ),
