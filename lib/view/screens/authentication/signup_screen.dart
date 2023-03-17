@@ -96,6 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               return "user name must not be empty";
                             }
                           },
+                          label: 'UserName',
                         ),
                         const SizedBox(
                           height: 20,
@@ -109,11 +110,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               return "email must not be empty";
                             }
                           },
+                          label: 'Email',
                         ),
                         const SizedBox(
                           height: 20,
                         ),
                         TextFieldInput(
+                          isPass: true,
                           textEditingController: passwordController,
                           hintText: "Enter your password",
                           textInputType: TextInputType.text,
@@ -122,6 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               return "password must not be empty";
                             }
                           },
+                          label: 'Password',
                         ),
                         const SizedBox(
                           height: 20,
@@ -135,6 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               return "bio must not be empty";
                             }
                           },
+                          label: 'Bio',
                         ),
                         const SizedBox(
                           height: 20,

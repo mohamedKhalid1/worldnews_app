@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 
 class ApiManager {
   static String apiUrl = 'https://newsapi.org/v2/';
-  static String apiKey = '9617f865758645cba88b75d048e47a89';
+  //static String apiKey = '9617f865758645cba88b75d048e47a89';
+  //static String apiKey = '81faf1a3db504fe598bc2fa70a4a5bc6';
+  static String apiKey = '9ef72eb4ea5a473d9654e88dc9b3b227';
 
   static Future<List<dynamic>> getNews(String category) async {
     String url = '${apiUrl}top-headlines';

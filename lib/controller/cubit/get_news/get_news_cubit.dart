@@ -46,8 +46,8 @@ class GetNewsCubit extends Cubit<GetNewsState> {
     }
   }
 
-  changeThemMode(){
-    isDark=!isDark;
+  void changeThemMode(){
+    isDark= !isDark;
     emit(ChangeThemeMode());
   }
 

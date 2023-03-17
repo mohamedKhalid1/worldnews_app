@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:worldnews_app/utils/constants.dart';
+import 'package:worldnews_app/utils/themes.dart';
 
 class TextFieldInput extends StatelessWidget {
   final TextEditingController textEditingController;
@@ -7,6 +8,7 @@ class TextFieldInput extends StatelessWidget {
   final String hintText;
   final TextInputType textInputType;
   final Function validate;
+  final String label;
 
   const TextFieldInput({
     Key? key,
@@ -14,7 +16,7 @@ class TextFieldInput extends StatelessWidget {
     this.isPass = false,
     required this.hintText,
     required this.textInputType,
-    required this.validate,
+    required this.validate, required this.label,
   }) : super(key: key);
 
   @override
@@ -25,9 +27,12 @@ class TextFieldInput extends StatelessWidget {
     );
 
     return TextFormField(
+      style: TextStyle(color: Theme.of(context).hintColor),
       validator: (value) => validate(value),
       controller: textEditingController,
       decoration: InputDecoration(
+        labelText: label,
+        labelStyle: Theme.of(context).textTheme.bodySmall,
         hintText: hintText,
         border: inputBorder,
         focusedBorder: inputBorder,

@@ -60,9 +60,12 @@ class ResetPasswordScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 70, bottom: 100),
                   child: LogoWidget(),
                 ),
-                 Text(
+                Text(
                   "Please enter your email for reset password !!",
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 18),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(fontSize: 18),
                 ),
                 const SizedBox(
                   height: 20,
@@ -76,6 +79,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       return "email must not be empty";
                     }
                   },
+                  label: 'Email',
                 ),
                 const SizedBox(
                   height: 50,
@@ -93,14 +97,12 @@ class ResetPasswordScreen extends StatelessWidget {
                             .resetPassword(email: emailController.text);
                       }
                     },
-                    child:  Text(
+                    child: Text(
                       "Reset Password",
-                      style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium,
-                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
+                ),
               ],
             ),
           ),

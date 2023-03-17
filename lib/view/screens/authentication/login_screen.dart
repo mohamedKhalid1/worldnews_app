@@ -60,8 +60,8 @@ class LoginScreen extends StatelessWidget {
                     key: formKey,
                     child: Column(
                       children: [
-                        SizedBox(height: MediaQuery.of(context).size.height*0.18),
-
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.18),
                         const Padding(
                           padding: EdgeInsets.only(left: 70),
                           child: LogoWidget(),
@@ -78,11 +78,13 @@ class LoginScreen extends StatelessWidget {
                               return "email must not be empty";
                             }
                           },
+                          label: 'Email',
                         ),
                         const SizedBox(
                           height: 20,
                         ),
                         TextFieldInput(
+                          isPass: true,
                           textEditingController: passwordController,
                           hintText: "Enter your password",
                           textInputType: TextInputType.text,
@@ -91,6 +93,7 @@ class LoginScreen extends StatelessWidget {
                               return "password must not be empty";
                             }
                           },
+                          label: 'Password',
                         ),
                         const SizedBox(
                           height: 20,
@@ -131,11 +134,15 @@ class LoginScreen extends StatelessWidget {
                                   "Log in",
                                   style: TextStyle(fontSize: 20),
                                 ))),
-                        SizedBox(height: MediaQuery.of(context).size.height*0.2),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.2),
                         Text.rich(
                           TextSpan(
                               text: "I don't have an account ",
-                              style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 18),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 18),
                               children: [
                                 TextSpan(
                                     recognizer: TapGestureRecognizer()

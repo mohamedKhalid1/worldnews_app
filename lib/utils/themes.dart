@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 class Themes {
   static ThemeData lightTheme = ThemeData(
-
     secondaryHeaderColor: Colors.white,
     hintColor: Colors.black,
     textTheme: const TextTheme(

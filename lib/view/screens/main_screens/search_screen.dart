@@ -9,7 +9,7 @@ import '../../widgets/news_item.dart';
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);
   final TextEditingController searchController = TextEditingController();
-  static const String route = "searchController";
+  static const String route = "SearchScreen";
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +46,7 @@ class SearchScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  style: TextStyle(color: Theme.of(context).hintColor),
                   validator: (value) {
                     if (value == null || value == "") {
                       return "Search must not be empty";
@@ -55,9 +56,9 @@ class SearchScreen extends StatelessWidget {
                   },
                   keyboardType: TextInputType.text,
                   controller: searchController,
-                  onChanged: (value) {
-                    GetNewsCubit.get(context).getSearch(value);
-                  },
+                  // onChanged: (value) {
+                  //   GetNewsCubit.get(context).getSearch(value);
+                  // },
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: Divider.createBorderSide(context,
@@ -70,9 +71,22 @@ class SearchScreen extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    prefixIcon: const Icon(Icons.search_outlined),
+                    prefixIcon: IconButton(
+                      icon: const Icon(
+                        Icons.search_outlined,
+                      ),
+                      color: Theme.of(context).hintColor,
+                      onPressed: () {
+                        GetNewsCubit.get(context).getSearch(searchController.text);
+                      },
+                    ),
                     hintText: "Search",
-                    label: const Text("search"),
+                    label: Text(
+                      "search",
+                      style: TextStyle(
+                        color: Theme.of(context).hintColor,
+                      ),
+                    ),
                   ),
                 ),
               ),

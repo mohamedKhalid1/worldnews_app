@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,37 +38,46 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: GetNewsCubit.get(context).isDark?Themes.darkTheme:Themes.lightTheme,
-      debugShowCheckedModeBanner: false,
-      title: 'worldnews',
-      routes: {
-        LoginScreen.route: (context) => LoginScreen(),
-        SignUpScreen.route: (context) => const SignUpScreen(),
-        HomeScreen.route: (context) => HomeScreen(),
-        ResetPasswordScreen.route: (context) => ResetPasswordScreen(),
-        NewsScreen.route: (context) => const NewsScreen(),
-        SeeMoreScreen.route: (context) => SeeMoreScreen(),
-        SearchScreen.route: (context) => SearchScreen(),
+    return BlocConsumer<GetNewsCubit, GetNewsState>(
+      listener: (context, state) {
+        // TODO: implement listener
       },
-      home: HomeScreen(),
-      //SignUpScreen(),
-      // StreamBuilder(
-      //     stream: FirebaseAuth.instance.userChanges(),
-      //     builder: (context, snapshot) {
-      //       if (snapshot.connectionState == ConnectionState.waiting) {
-      //         return const Scaffold(
-      //           body: Center(
-      //             child: CircularProgressIndicator.adaptive(),
-      //           ),
-      //         );
-      //       }
-      //       if (snapshot.data != null) {
-      //         return const HomeScreen();
-      //       } else {
-      //         return LoginScreen();
-      //       }
-      //     }),
+      builder: (context, state) {
+        return MaterialApp(
+          theme: Themes.lightTheme,
+          darkTheme: Themes.darkTheme,
+          themeMode: GetNewsCubit.get(context).isDark
+              ? ThemeMode.dark
+              : ThemeMode.light,
+          debugShowCheckedModeBanner: false,
+          title: 'worldnews',
+          routes: {
+            LoginScreen.route: (context) => LoginScreen(),
+            SignUpScreen.route: (context) => const SignUpScreen(),
+            HomeScreen.route: (context) => HomeScreen(),
+            ResetPasswordScreen.route: (context) => ResetPasswordScreen(),
+            NewsScreen.route: (context) => const NewsScreen(),
+            SeeMoreScreen.route: (context) => SeeMoreScreen(),
+            SearchScreen.route: (context) => SearchScreen(),
+          },
+          home: StreamBuilder(
+              stream: FirebaseAuth.instance.userChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                  );
+                }
+                if (snapshot.data != null) {
+                  return HomeScreen();
+                } else {
+                  return LoginScreen();
+                }
+              }),
+        );
+      },
     );
   }
 }
